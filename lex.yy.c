@@ -438,9 +438,29 @@ int yy_flex_debug = 0;
 char *yytext;
 #line 1 "binary_string_lexer.l"
 #line 2 "binary_string_lexer.l"
+#include <stdio.h>
+
 int ones_count = 0;
-#line 442 "lex.yy.c"
-#line 443 "lex.yy.c"
+
+
+size_t strlen(const char *str)
+{
+    const char *s;
+    for (s = str; *s; ++s);
+    return(s - str);
+}
+
+
+void printValidBinaryString(const char *binaryString) {
+    int stringLength = strlen(binaryString);
+    printf("Valid binary string: %s with size : %d\n", binaryString,stringLength);
+}
+
+void resetOnNewLine() {
+    ones_count = 0;
+}
+#line 462 "lex.yy.c"
+#line 463 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -657,9 +677,9 @@ YY_DECL
 		}
 
 	{
-#line 5 "binary_string_lexer.l"
+#line 25 "binary_string_lexer.l"
 
-#line 662 "lex.yy.c"
+#line 682 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -718,14 +738,14 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 6 "binary_string_lexer.l"
+#line 26 "binary_string_lexer.l"
 {
     if (yytext[0] == '1') {
         ones_count++;
     }
 
     if (ones_count >= 4) {
-        printf("Valid binary string: %s\n", yytext);
+        printValidBinaryString(yytext);
     }
 
     ECHO;
@@ -734,24 +754,24 @@ YY_RULE_SETUP
 case 2:
 /* rule 2 can match eol */
 YY_RULE_SETUP
-#line 18 "binary_string_lexer.l"
+#line 38 "binary_string_lexer.l"
 {
-    ones_count = 0;
+    resetOnNewLine();
 }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 22 "binary_string_lexer.l"
+#line 42 "binary_string_lexer.l"
 {
     // Ignore any other characters
 }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 26 "binary_string_lexer.l"
+#line 45 "binary_string_lexer.l"
 ECHO;
 	YY_BREAK
-#line 754 "lex.yy.c"
+#line 774 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1756,7 +1776,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 26 "binary_string_lexer.l"
+#line 45 "binary_string_lexer.l"
 
 
 int main() {

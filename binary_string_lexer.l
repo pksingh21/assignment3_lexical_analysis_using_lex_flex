@@ -1,5 +1,25 @@
 %{
+#include <stdio.h>
+
 int ones_count = 0;
+
+
+size_t strlen(const char *str)
+{
+    const char *s;
+    for (s = str; *s; ++s);
+    return(s - str);
+}
+
+
+void printValidBinaryString(const char *binaryString) {
+    int stringLength = strlen(binaryString);
+    printf("Valid binary string: %s with size : %d\n", binaryString,stringLength);
+}
+
+void resetOnNewLine() {
+    ones_count = 0;
+}
 %}
 
 %%
@@ -9,20 +29,19 @@ int ones_count = 0;
     }
 
     if (ones_count >= 4) {
-        printf("Valid binary string: %s\n", yytext);
+        printValidBinaryString(yytext);
     }
 
     ECHO;
 }
 
 \n {
-    ones_count = 0;
+    resetOnNewLine();
 }
 
 . {
     // Ignore any other characters
 }
-
 %%
 
 int main() {
