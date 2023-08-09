@@ -17,6 +17,9 @@ void printValidBinaryString(const char *binaryString) {
     printf("Valid binary string: %s with size : %d\n", binaryString,stringLength);
 }
 
+void printInvalidBinaryString(const char *binaryString){
+    printf("Invalid binary string: %s ", binaryString,stringLength);
+}
 void resetOnNewLine() {
     ones_count = 0;
 }
@@ -30,6 +33,8 @@ void resetOnNewLine() {
 
     if (ones_count >= 4) {
         printValidBinaryString(yytext);
+    }else{
+        printInvalidBinaryString(yytext);
     }
 
     ECHO;
