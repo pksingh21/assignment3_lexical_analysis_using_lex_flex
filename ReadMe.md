@@ -1,4 +1,5 @@
-
+## Author : [Prateek Kumar Singh]() 20cs01003@iitbbs.ac.in 
+[Compiler Design Lab Assignments]()
 Q1_1
 
 Regex to find consecutive letters
