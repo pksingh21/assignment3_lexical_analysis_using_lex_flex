@@ -20,7 +20,7 @@ repo        [<|>|<>|=|>=|<=]
 {else}      { printf("(ELSE,)\n"); }
 {repo}      { printf("(RELOP, %s)\n", yytext); }
 {id}        { printf("(ID, %s)\n", yytext); }
-.           { /* Ignore other characters */ }
+.           {   }
 
 %%
 
