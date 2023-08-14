@@ -1,2 +1,2 @@
-flex q3_1.l
+flex q1_3.l
 gcc lex.yy.c -o binary_string_lexer -lfl 
